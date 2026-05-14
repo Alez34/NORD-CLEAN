@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORD CLEAN — Химчистка и стирка с доставкой в Санкт-Петербурге</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2c5282;
+            --accent: #e67e22;
+            --accent-hover: #d35400;
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --success: #10b981;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1e3a5f 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: none;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: 30px;
+            left: -30px;
+            background: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes float-mobile {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .badge-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--success);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .badge-text {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .badge-text span {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(30, 58, 95, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: block;
+            min-height: 300px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+        }
+
+        .about-stats {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .about-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 500;
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            font-weight: 600;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: transparent;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(30, 58, 95, 0.08);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.6rem;
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .process-section .section-tag {
+            background: rgba(255,255,255,0.15);
+            color: var(--white);
+        }
+
+        .process-section .section-title,
+        .process-section .section-subtitle {
+            color: var(--white);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        .process-grid::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: rgba(255,255,255,0.2);
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 0 4px rgba(230, 126, 34, 0.3);
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Advantages Section */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .advantage-card {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .advantage-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: translateY(-3px);
+        }
+
+        .advantage-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(30, 58, 95, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .advantage-content h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .advantage-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Audience Section */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .audience-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .audience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .audience-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .audience-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .audience-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(30, 58, 95, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+
+        .audience-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .audience-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: var(--bg);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(30, 58, 95, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        /* Contacts Section */
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(30, 58, 95, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .contact-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.6);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .hero-content p {
+                margin: 0 auto 2.5rem;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-image {
+                max-width: 500px;
+                margin: 0 auto;
+                transform: none;
+            }
+
+            .hero-badge {
+                left: 50%;
+                transform: translateX(-50%);
+                animation: float-mobile 3s ease-in-out infinite;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .process-grid::before {
+                display: none;
+            }
+
+            .step-number {
+                margin-bottom: 1rem;
+            }
+
+            .audience-grid,
+            .contacts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .advantages-grid,
+            .audience-grid,
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .about-stats {
+                position: relative;
+                bottom: 0;
+                right: 0;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">❄️</div>
+                NORD CLEAN
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">О компании</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#process">Как работаем</a></li>
+                <li><a href="#advantages">Преимущества</a></li>
+                <li><a href="#audience">Для кого</a></li>
+                <li><a href="#form">Заявка</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Профессиональный уход за вещами <span>с доставкой</span></h1>
+                <p>Химчистка, стирка и уход за вашими вещами в Санкт-Петербурге. Заберём, почистим, доставим — вы даже не заметите, как всё сделано.</p>
+                <div>
+                    <a href="#form" class="btn">Оставить заявку →</a>
+                    <a href="#services" class="btn btn-outline">Наши услуги</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=600&h=500&fit=crop" alt="Чистые вещи на вешалках" class="hero-image">
+                <div class="hero-badge">
+                    <div class="badge-icon">✓</div>
+                    <div class="badge-text">
+                        5000+ клиентов
+                        <span>доверяют нам ежемесячно</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">О компании</span>
+                <h2 class="section-title">Полный цикл заботы о ваших вещах</h2>
+                <p class="section-subtitle">Индивидуальный подход к каждому клиенту и каждой вещи</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&h=500&fit=crop&auto=format" 
+                         alt="Профессиональная химчистка" 
+                         class="about-img"
+                         onerror="this.style.background='linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<span style=\'color:#94a3b8;font-size:4rem\'>🧺</span>';"
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">7+</div>
+                            <div class="stat-label">лет опыта</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">профессионалов</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">60к</div>
+                            <div class="stat-label">вещей в год</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">4.9</div>
+                            <div class="stat-label">рейтинг</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h3>Мы делаем всё, чтобы ваши вещи выглядели идеально</h3>
+                    <p>NORD CLEAN — это современный сервис химчистки и стирки в Санкт-Петербурге. Мы предлагаем полный цикл услуг: от приёма вещей до их безупречной доставки обратно.</p>
+                    <p>Каждая вещь проходит индивидуальную обработку с учётом материала, цвета и типа загрязнения. Мы используем только сертифицированные и экологичные средства.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-icon">↻</span>
+                            Полный цикл — от заявки до доставки
+                        </li>
+                        <li>
+                            <span class="feature-icon">◎</span>
+                            Индивидуальный подход к каждой вещи
+                        </li>
+                        <li>
+                            <span class="feature-icon">🌿</span>
+                            Экологичные и безопасные средства
+                        </li>
+                        <li>
+                            <span class="feature-icon">🚚</span>
+                            Бесплатный забор и доставка по СПб
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services" style="background: var(--white);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Услуги</span>
+                <h2 class="section-title">Всё для ухода за вашими вещами</h2>
+                <p class="section-subtitle">Профессиональные решения для любых задач</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">👔</div>
+                    <h3>Химчистка</h3>
+                    <p>Деликатная чистка костюмов, платьев, пальто и верхней одежды с сохранением формы и цвета</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧺</div>
+                    <h3>Стирка</h3>
+                    <p>Профессиональная стирка белья, постельного и домашнего текстиля с глажкой и складыванием</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👞</div>
+                    <h3>Обувь</h3>
+                    <p>Чистка, реставрация и уход за кожаной, замшевой и текстильной обувью любой сложности</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Корп. заказы</h3>
+                    <p>Обслуживание отелей, ресторанов, салонов красоты и офисов с индивидуальными условиями</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚐</div>
+                    <h3>Доставка</h3>
+                    <p>Бесплатный забор и доставка в удобное время по всему Санкт-Петербургу и пригородам</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section process-section" id="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Как проходит работа</span>
+                <h2 class="section-title">5 простых шагов до идеального результата</h2>
+                <p class="section-subtitle">Мы позаботимся обо всём — вам останется только выбрать удобное время</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">📱</div>
+                    <h3>Заявка</h3>
+                    <p>Оставляете заявку на сайте или по телефону. Выбираете удобное время</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">🚐</div>
+                    <h3>Забор</h3>
+                    <p>Курьер приезжает в назначенное время и забирает ваши вещи</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">✨</div>
+                    <h3>Обработка</h3>
+                    <p>Профессиональная чистка с учётом всех особенностей материала</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">🔍</div>
+                    <h3>Контроль</h3>
+                    <p>Проверка качества перед упаковкой и отправкой клиенту</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-icon">🏠</div>
+                    <h3>Возврат</h3>
+                    <p>Доставляем чистые вещи в удобное время и место</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="section" id="advantages">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Преимущества</span>
+                <h2 class="section-title">Почему выбирают NORD CLEAN</h2>
+                <p class="section-subtitle">Мы создаём сервис, которому можно доверять</p>
+            </div>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">⚡</div>
+                    <div class="advantage-content">
+                        <h3>Скорость</h3>
+                        <p>Стандартные заказы выполняем за 24–48 часов. Экспресс — за 6 часов</p>
+                    </div>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🛡️</div>
+                    <div class="advantage-content">
+                        <h3>Гарантия качества</h3>
+                        <p>Если результат не устроит — переделаем бесплатно или вернём деньги</p>
+                    </div>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">📍</div>
+                    <div class="advantage-content">
+                        <h3>Отслеживание</h3>
+                        <p>СМС-уведомления на каждом этапе: забрали, в работе, в пути</p>
+                    </div>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">💰</div>
+                    <div class="advantage-content">
+                        <h3>Прозрачные цены</h3>
+                        <p>Фиксированный прайс без скрытых платежей и доплат</p>
+                    </div>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🌿</div>
+                    <div class="advantage-content">
+                        <h3>Экологичность</h3>
+                        <p>Используем биоразлагаемые средства без вреда для здоровья</p>
+                    </div>
+                </div>
+                <div class="advantage-card">
+                    <div class="advantage-icon">🎁</div>
+                    <div class="advantage-content">
+                        <h3>Программа лояльности</h3>
+                        <p>Скидки постоянным клиентам до 25% и бонусы за рекомендации</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audience Section -->
+    <section class="section" id="audience" style="background: var(--white);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Для кого подходит</span>
+                <h2 class="section-title">Решения для любого образа жизни</h2>
+                <p class="section-subtitle">Удобный сервис для всех, кто ценит время и качество</p>
+            </div>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="audience-icon">👤</div>
+                    <h3>Частные клиенты</h3>
+                    <p>Для тех, кто хочет освободить время от бытовых задач и доверить уход за вещами профессионалам</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Семьи</h3>
+                    <p>Большие объёмы стирки, детские вещи, постельное бельё — всё под контролем</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">💼</div>
+                    <h3>Бизнес</h3>
+                    <p>Корпоративные контракты для отелей, ресторанов, салонов и офисных центров</p>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">🤵</div>
+                    <h3>Деловые люди</h3>
+                    <p>Экспресс-чистка костюмов и рубашек, доставка прямо в офис или домой</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="section form-section" id="form">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Оставить заявку</span>
+                <h2 class="section-title">Закажите услугу за 2 минуты</h2>
+                <p class="section-subtitle">Мы перезвоним в течение 15 минут для уточнения деталей</p>
+            </div>
+            <div class="form-container">
+                <form onsubmit="event.preventDefault(); alert('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input type="text" id="name" placeholder="Иван Иванов" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" placeholder="+7 (999) 000-00-00" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Тип услуги</label>
+                        <select id="service" required>
+                            <option value="" disabled selected>Выберите услугу</option>
+                            <option value="dryclean">Химчистка</option>
+                            <option value="wash">Стирка</option>
+                            <option value="shoes">Уход за обувью</option>
+                            <option value="corporate">Корпоративный заказ</option>
+                            <option value="delivery">Только доставка</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Комментарий</label>
+                        <textarea id="comment" placeholder="Опишите, что нужно почистить, количество вещей, предпочтительное время..."></textarea>
+                    </div>
+                    <button type="submit" class="btn submit-btn">Отправить заявку →</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section class="section" id="contacts" style="background: var(--white);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Контакты</span>
+                <h2 class="section-title">Свяжитесь с нами</h2>
+                <p class="section-subtitle">Работаем ежедневно, чтобы быть рядом, когда это нужно</p>
+            </div>
+            <div class="contacts-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Телефон</h3>
+                    <p><a href="tel:+78121234567">+7 (999) 123-45-67</a></p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">Звонки и WhatsApp</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:hello@nordclean.ru">hello@nordclean.ru</a></p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">Ответим за 2 часа</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Город</h3>
+                    <p>Санкт-Петербург</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">и Ленинградская область</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">🕐</div>
+                    <h3>График работы</h3>
+                    <p>Ежедневно</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">8:00 — 22:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 NORD CLEAN. Химчистка и стирка с доставкой в Санкт-Петербурге.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
+
+</body>
+</html>
